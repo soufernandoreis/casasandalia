@@ -55,7 +55,6 @@
       position: relative;
     }
 
-    /* LOGO (DESKTOP) */
     .hero-logo {
       position: absolute;
       width: 320px;
@@ -134,7 +133,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: 0.25s ease;
-      background: #3a3a3a;               /* cinza grafite */
+      background: #3a3a3a;
       color: #ffffff;
       box-shadow: 0 8px 18px rgba(0,0,0,0.25);
       animation: cta-pulse 1.8s ease-in-out infinite;
@@ -169,7 +168,7 @@
       align-items: center;
       margin-left: 12px;
       opacity: 0.85;
-      font-size: 1.2rem;   /* setinha maior */
+      font-size: 1.2rem;
     }
 
     /* ======================
@@ -178,7 +177,7 @@
 
     .hero-image-wrapper {
       display: grid;
-      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
       column-gap: 24px;
       align-items: center;
     }
@@ -197,18 +196,17 @@
     .hero-quote {
       color: var(--quote-brown);
       font-family: "Cormorant Garamond", serif;
-      max-width: 260px;
-      line-height: 1.1;
+      max-width: 220px;      /* menor que antes */
+      line-height: 1.15;
       position: relative;
     }
 
     .hero-quote-inner {
-      position: relative;
-      padding: 4px 6px 4px 2px;
+      padding: 2px 2px 2px 0;
     }
 
     .hero-quote-mark {
-      font-size: 2.4rem;
+      font-size: 1.8rem;      /* menor */
       font-weight: 600;
       line-height: 1;
       display: block;
@@ -220,50 +218,27 @@
     }
 
     .hero-quote-small {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       letter-spacing: 0.03em;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .hero-quote-big {
-      font-size: 1.9rem;
+      font-size: 1.4rem;      /* bem menor que antes */
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     .hero-quote-bottom {
-      font-size: 0.95rem;
-      margin-top: 10px;
+      font-size: 0.9rem;
+      margin-top: 6px;
     }
 
     .hero-quote-bottom strong {
       font-weight: 600;
     }
 
-    /* linhas inspiradas na referência */
-    .hero-quote-inner::before,
-    .hero-quote-inner::after {
-      content: "";
-      position: absolute;
-      background: var(--quote-brown);
-    }
-
-    /* linha horizontal no meio, à direita do texto maior */
-    .hero-quote-inner::before {
-      height: 1px;
-      width: 55%;
-      top: 52%;
-      right: 0;
-    }
-
-    /* linha em L na parte de baixo esquerda */
-    .hero-quote-inner::after {
-      width: 38%;
-      height: 1px;
-      left: 0;
-      bottom: 0;
-      box-shadow: 0 -60px 0 0 var(--white); /* truque pra só aparecer parte inferior */
-    }
+    /* linhas REMOVIDAS: nenhum ::before/::after aqui */
 
     /* ======================
        CARROSSEL MANUAL (SAPATOS)
@@ -349,7 +324,7 @@
     .shoe-nav.next { right: 0; }
 
     /* ======================
-       CARROSSEL DE FEEDBACKS (SEÇÃO PRÓPRIA)
+       CARROSSEL DE FEEDBACKS
        ====================== */
 
     .feedback-section {
@@ -493,6 +468,7 @@
         text-align: center;
       }
 
+      /* MOBILE: quote acima da imagem da Raquel */
       .hero-image-wrapper {
         display: flex;
         flex-direction: column;
@@ -500,15 +476,16 @@
         margin-top: 16px;
       }
 
-      .hero-image {
+      .hero-quote {
         order: 1;
+        max-width: 90%;
+        margin-bottom: 10px;
+        text-align: left;
+        align-self: flex-start; /* fica mais para a esquerda, ao lado visualmente */
       }
 
-      .hero-quote {
+      .hero-image {
         order: 2;
-        max-width: 85%;
-        margin-top: 14px;
-        align-self: flex-start; /* fica ao lado (esquerda) visualmente abaixo da imagem */
       }
 
       .shoe-layout {
@@ -525,7 +502,7 @@
       }
 
       .shoe-nav {
-        display: none; /* no mobile arrasta com o dedo */
+        display: none;
       }
 
       .feedback-layout {
@@ -537,7 +514,7 @@
       }
 
       .feedback-nav {
-        display: none; /* mobile navega no dedo */
+        display: none;
       }
 
       .cta-button {
@@ -555,7 +532,6 @@
 
     <div class="hero-text">
 
-      <!-- LOGO -->
       <div class="hero-logo">
         <img src="logo.png" alt="Logo Casa das Sandálias" />
       </div>
@@ -594,7 +570,6 @@
 
     </div>
 
-    <!-- COLUNA DIREITA: QUOTE + RAQUEL -->
     <div class="hero-image-wrapper">
 
       <div class="hero-quote">
@@ -650,7 +625,7 @@
     </div>
   </section>
 
-  <!-- SEÇÃO: CARROSSEL DE FEEDBACKS -->
+  <!-- FEEDBACKS -->
   <section class="feedback-section">
     <p class="feedback-title">O que nossas clientes dizem</p>
 
@@ -737,9 +712,7 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  /* ==========================
-     CARROSSEL DE SAPATOS
-     ========================== */
+  /* CARROSSEL DE SAPATOS */
   const layout = document.querySelector(".shoe-layout");
   const track = document.querySelector(".shoe-track");
   const slides = track ? Array.from(track.querySelectorAll(".shoe")) : [];
@@ -801,9 +774,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /* ==========================
-     CARROSSEL DE FEEDBACKS
-     ========================== */
+  /* CARROSSEL DE FEEDBACKS */
   const fbLayout = document.querySelector(".feedback-layout");
   const fbTrack = fbLayout?.querySelector(".feedback-track");
   const fbCards = fbTrack ? Array.from(fbTrack.querySelectorAll(".feedback-card")) : [];
