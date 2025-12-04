@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Casa das Sandálias</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
   <!-- FONTES -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
@@ -22,10 +22,15 @@
       box-sizing: border-box;
     }
 
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
     body {
       background: #ffffff;
       font-family: "Inter", sans-serif;
       color: var(--dark);
+      overflow-x: hidden;
     }
 
     main {
@@ -397,7 +402,7 @@
 
       <p class="cta-note">Atendimento rápido e seguro.</p>
 
-      <!-- DEPOIMENTOS: entre os botões e a imagem da Raquel (mobile e desktop) -->
+      <!-- DEPOIMENTOS -->
       <div class="feedback-wrapper">
         <p class="feedback-heading">O que nossas clientes dizem</p>
 
