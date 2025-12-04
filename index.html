@@ -7,7 +7,7 @@
 
   <!-- Fontes Google -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;800&family=Cormorant+Garamond:wght@400;600&display=swap"
     rel="stylesheet"
   />
 
@@ -17,6 +17,7 @@
       --yellow-strong: #ffb52e;
       --dark: #1f1f1f;
       --white: #ffffff;
+      --quote-brown: #4b3a30;
     }
 
     * {
@@ -58,7 +59,7 @@
     .hero-logo {
       position: absolute;
       width: 320px;
-      top: -140px;          /* ajustado para não cortar a logo */
+      top: -140px;
       left: 60px;
       pointer-events: none;
       z-index: 1;
@@ -124,7 +125,7 @@
     .cta-button {
       display: inline-flex;
       align-items: center;
-      justify-content: center;           /* conteúdo centralizado */
+      justify-content: center;
       padding: 12px 22px;
       border-radius: 999px;
       border: none;
@@ -171,11 +172,19 @@
       font-size: 1.2rem;   /* setinha maior */
     }
 
-    /* RAQUEL */
+    /* ======================
+       HERO IMAGE + QUOTE
+       ====================== */
 
     .hero-image-wrapper {
-      display: flex;
-      justify-content: flex-end;
+      display: grid;
+      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+      column-gap: 24px;
+      align-items: center;
+    }
+
+    .hero-image {
+      justify-self: end;
     }
 
     .hero-image img {
@@ -183,6 +192,77 @@
       max-width: 350px;
       object-fit: contain;
       filter: drop-shadow(0 12px 18px rgba(0,0,0,0.25));
+    }
+
+    .hero-quote {
+      color: var(--quote-brown);
+      font-family: "Cormorant Garamond", serif;
+      max-width: 260px;
+      line-height: 1.1;
+      position: relative;
+    }
+
+    .hero-quote-inner {
+      position: relative;
+      padding: 4px 6px 4px 2px;
+    }
+
+    .hero-quote-mark {
+      font-size: 2.4rem;
+      font-weight: 600;
+      line-height: 1;
+      display: block;
+    }
+
+    .hero-quote-mark--end {
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .hero-quote-small {
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+
+    .hero-quote-big {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hero-quote-bottom {
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
+
+    .hero-quote-bottom strong {
+      font-weight: 600;
+    }
+
+    /* linhas inspiradas na referência */
+    .hero-quote-inner::before,
+    .hero-quote-inner::after {
+      content: "";
+      position: absolute;
+      background: var(--quote-brown);
+    }
+
+    /* linha horizontal no meio, à direita do texto maior */
+    .hero-quote-inner::before {
+      height: 1px;
+      width: 55%;
+      top: 52%;
+      right: 0;
+    }
+
+    /* linha em L na parte de baixo esquerda */
+    .hero-quote-inner::after {
+      width: 38%;
+      height: 1px;
+      left: 0;
+      bottom: 0;
+      box-shadow: 0 -60px 0 0 var(--white); /* truque pra só aparecer parte inferior */
     }
 
     /* ======================
@@ -202,7 +282,7 @@
       font-weight: 600;
       text-transform: uppercase;
       margin-bottom: 6px;
-      text-align: center;       /* CENTRALIZADO */
+      text-align: center;
     }
 
     .gallery-subtitle {
@@ -210,7 +290,7 @@
       font-size: 1.06rem;
       font-weight: 600;
       margin-bottom: 16px;
-      text-align: center;       /* opcional: também centralizado */
+      text-align: center;
     }
 
     .shoe-layout {
@@ -285,7 +365,7 @@
       text-transform: uppercase;
       margin-bottom: 12px;
       opacity: 0.85;
-      text-align: center;       /* CENTRALIZADO */
+      text-align: center;
     }
 
     .feedback-layout {
@@ -414,8 +494,21 @@
       }
 
       .hero-image-wrapper {
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin-top: 16px;
+      }
+
+      .hero-image {
+        order: 1;
+      }
+
+      .hero-quote {
+        order: 2;
+        max-width: 85%;
+        margin-top: 14px;
+        align-self: flex-start; /* fica ao lado (esquerda) visualmente abaixo da imagem */
       }
 
       .shoe-layout {
@@ -499,12 +592,32 @@
         </a>
       </div>
 
-      <!-- (Frase "atendimento rápido e seguro" removida) -->
-
     </div>
 
-    <!-- RAQUEL -->
+    <!-- COLUNA DIREITA: QUOTE + RAQUEL -->
     <div class="hero-image-wrapper">
+
+      <div class="hero-quote">
+        <span class="hero-quote-mark">“</span>
+        <div class="hero-quote-inner">
+          <p class="hero-quote-small">
+            Não é só sobre vender,
+          </p>
+
+          <p class="hero-quote-big">
+            é sobre entregar à mulher<br />
+            a confiança em cada passo
+          </p>
+
+          <p class="hero-quote-bottom">
+            é estar junto com você;
+            <strong>passo a passo</strong><br />
+            na construção da sua história
+          </p>
+        </div>
+        <span class="hero-quote-mark hero-quote-mark--end">”</span>
+      </div>
+
       <div class="hero-image">
         <img src="raquel.png" alt="Modelo Raquel" />
       </div>
@@ -619,8 +732,6 @@
       <button class="feedback-nav next" type="button" aria-label="Próximo depoimento">›</button>
     </div>
   </section>
-
-  <!-- Rodapé removido -->
 
 </main>
 
