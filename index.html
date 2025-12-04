@@ -57,9 +57,9 @@
     /* LOGO (DESKTOP) */
     .hero-logo {
       position: absolute;
-      width: 320px;       /* logo grande */
-      top: -140px;        /* um pouco menos negativo para não “comer” a logo */
-      left: 60px;         /* aproximado do segundo "A" de CASA */
+      width: 320px;
+      top: -140px;          /* ajustado para não cortar a logo */
+      left: 60px;
       pointer-events: none;
       z-index: 1;
     }
@@ -80,8 +80,6 @@
       margin-bottom: 8px;
       position: relative;
       z-index: 3;
-
-      /* SOMBRA SUAVE PROFISSIONAL (OPÇÃO 1) */
       text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.18);
     }
 
@@ -100,7 +98,9 @@
       margin-bottom: 18px;
     }
 
-    /* BOTÕES (DEGRADÊ DOURADO – OPÇÃO 3) */
+    /* ======================
+       BOTÕES (CINZA GRAFITE + PULSE)
+       ====================== */
 
     .buttons {
       display: flex;
@@ -110,57 +110,65 @@
       margin-bottom: 8px;
     }
 
+    @keyframes cta-pulse {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+      }
+      50% {
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 12px 26px rgba(0,0,0,0.35);
+      }
+    }
+
     .cta-button {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 12px 18px;
+      justify-content: center;           /* conteúdo centralizado */
+      padding: 12px 22px;
       border-radius: 999px;
       border: none;
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       font-weight: 600;
       cursor: pointer;
       transition: 0.25s ease;
-
-      /* DEGRADÊ PREMIUM AMARELO → DOURADO */
-      background: linear-gradient(135deg, #ffdd55 0%, #ffb52e 100%);
-      color: #000000;
-
-      /* SOMBRA DOURADA */
-      box-shadow: 0 10px 24px rgba(255, 200, 0, 0.35);
+      background: #3a3a3a;               /* cinza grafite */
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+      animation: cta-pulse 1.8s ease-in-out infinite;
     }
 
     .cta-button:hover {
-      transform: translateY(-3px) scale(1.02);
-      background: linear-gradient(135deg, #ffe684 0%, #ffc244 100%);
-      box-shadow: 0 14px 32px rgba(255, 200, 0, 0.45);
+      background: #2c2c2c;
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.35);
     }
 
     .cta-button span.label {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
+      white-space: nowrap;
     }
 
     .cta-icon {
       width: 26px;
       height: 26px;
       border-radius: 999px;
-      border: 2px solid var(--dark);
+      border: 2px solid #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 0.9rem;
     }
 
     .cta-chevron {
-      opacity: 0.7;
-    }
-
-    .cta-note {
-      font-size: 0.86rem;
-      opacity: 0.9;
-      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      margin-left: 12px;
+      opacity: 0.85;
+      font-size: 1.2rem;   /* setinha maior */
     }
 
     /* RAQUEL */
@@ -194,6 +202,7 @@
       font-weight: 600;
       text-transform: uppercase;
       margin-bottom: 6px;
+      text-align: center;       /* CENTRALIZADO */
     }
 
     .gallery-subtitle {
@@ -201,11 +210,12 @@
       font-size: 1.06rem;
       font-weight: 600;
       margin-bottom: 16px;
+      text-align: center;       /* opcional: também centralizado */
     }
 
     .shoe-layout {
       position: relative;
-      overflow: hidden;          /* ISOLADO E RECORTADO */
+      overflow: hidden;
       padding: 16px 32px;
     }
 
@@ -273,20 +283,14 @@
       font-size: 0.9rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 6px;
-      opacity: 0.8;
-    }
-
-    .feedback-subtitle {
-      font-family: "Poppins", sans-serif;
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+      opacity: 0.85;
+      text-align: center;       /* CENTRALIZADO */
     }
 
     .feedback-layout {
       position: relative;
-      overflow: hidden;          /* AQUI ISOLAMOS E RECORTAMOS O CARROSSEL */
+      overflow: hidden;
       padding: 12px 32px 4px;
     }
 
@@ -342,7 +346,7 @@
     .feedback-stars {
       margin: 4px 0 6px;
       font-size: 0.8rem;
-      color: #ffb400; /* amarelo das estrelas */
+      color: #ffb400;
     }
 
     .feedback-text {
@@ -371,13 +375,6 @@
     .feedback-nav:hover { transform: translateY(-50%) scale(1.08); }
     .feedback-nav.prev { left: 8px; }
     .feedback-nav.next { right: 8px; }
-
-    .footer {
-      margin-top: 32px;
-      font-size: 0.8rem;
-      text-align: center;
-      opacity: 0.9;
-    }
 
     /* ======================
        RESPONSIVO (MOBILE)
@@ -449,6 +446,10 @@
       .feedback-nav {
         display: none; /* mobile navega no dedo */
       }
+
+      .cta-button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -480,7 +481,8 @@
           href="https://wa.me/5562982331156?text=Oi%20Amanda%2C%20quero%20fazer%20um%20pedido."
         >
           <span class="label">
-            <span class="cta-icon">💬</span> Vendedora — AMANDA
+            <span class="cta-icon">💬</span>
+            Vendedora — AMANDA
           </span>
           <span class="cta-chevron">➜</span>
         </a>
@@ -490,13 +492,15 @@
           href="https://wa.me/5562982331156?text=Quero%20entrar%20no%20grupo%20de%20ofertas."
         >
           <span class="label">
-            <span class="cta-icon">🔔</span> Acesse nosso Grupo de OFERTAS
+            <span class="cta-icon">🔔</span>
+            Acesse nosso Grupo de OFERTAS
           </span>
           <span class="cta-chevron">➜</span>
         </a>
       </div>
 
-      <p class="cta-note">Atendimento rápido e seguro.</p>
+      <!-- (Frase "atendimento rápido e seguro" removida) -->
+
     </div>
 
     <!-- RAQUEL -->
@@ -533,10 +537,9 @@
     </div>
   </section>
 
-  <!-- NOVA SEÇÃO: CARROSSEL DE FEEDBACKS ISOLADO -->
+  <!-- SEÇÃO: CARROSSEL DE FEEDBACKS -->
   <section class="feedback-section">
     <p class="feedback-title">O que nossas clientes dizem</p>
-    <p class="feedback-subtitle">Depoimentos reais de quem compra com a gente</p>
 
     <div class="feedback-layout">
       <button class="feedback-nav prev" type="button" aria-label="Depoimento anterior">‹</button>
@@ -617,9 +620,7 @@
     </div>
   </section>
 
-  <footer class="footer">
-    @casadasandalias — WhatsApp: (62) 98233-1156
-  </footer>
+  <!-- Rodapé removido -->
 
 </main>
 
@@ -630,7 +631,7 @@ document.addEventListener("DOMContentLoaded", function () {
      ========================== */
   const layout = document.querySelector(".shoe-layout");
   const track = document.querySelector(".shoe-track");
-  const slides = Array.from(track.querySelectorAll(".shoe"));
+  const slides = track ? Array.from(track.querySelectorAll(".shoe")) : [];
   const prevBtn = document.querySelector(".shoe-nav.prev");
   const nextBtn = document.querySelector(".shoe-nav.next");
 
