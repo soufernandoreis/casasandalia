@@ -160,7 +160,123 @@
     .cta-note {
       font-size: 0.86rem;
       opacity: 0.9;
+      margin-top: 6px;
     }
+
+    /* ======================
+       CARDS DE FEEDBACK
+       ====================== */
+
+    .feedback-strip {
+      margin-top: 14px;
+      max-width: 560px;
+    }
+
+    .feedback-strip-title {
+      font-family: "Poppins", sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      opacity: 0.8;
+    }
+
+    .feedback-carousel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feedback-track {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+    .feedback-track::-webkit-scrollbar { display: none; }
+
+    .feedback-card {
+      flex: 0 0 auto;
+      width: 260px;
+      background: #f9f9f9;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.06);
+      padding: 10px 12px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+    }
+
+    .feedback-card.active {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.16);
+    }
+
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .feedback-avatar img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .feedback-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feedback-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .feedback-meta {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .feedback-stars {
+      margin: 4px 0 6px;
+      font-size: 0.8rem;
+      color: #ffb400; /* amarelo das estrelas */
+    }
+
+    .feedback-text {
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+
+    .feedback-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #ffffffdd;
+      border: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+      transition: 0.2s ease;
+    }
+
+    .feedback-nav:hover {
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .feedback-nav.prev { left: 0; }
+    .feedback-nav.next { right: 0; }
 
     /* RAQUEL – SEM CARD, SEM FUNDO COLORIDO */
 
@@ -324,6 +440,16 @@
       .shoe-nav {
         display: none; /* no mobile arrasta com o dedo */
       }
+
+      /* feedback responsivo */
+      .feedback-strip {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .feedback-card {
+        width: min(80vw, 260px);
+      }
     }
   </style>
 </head>
@@ -370,6 +496,89 @@
           <span class="cta-chevron">➜</span>
         </a>
       </div>
+
+      <!-- FEEDBACK CARDS: logo abaixo dos botões -->
+      <section class="feedback-strip" aria-label="Depoimentos de clientes">
+        <p class="feedback-strip-title">O que nossas clientes dizem</p>
+
+        <div class="feedback-carousel">
+          <button class="feedback-nav prev" type="button" aria-label="Depoimento anterior">‹</button>
+
+          <div class="feedback-track">
+            <article class="feedback-card active">
+              <header class="feedback-header">
+                <div class="feedback-avatar">
+                  <img src="loira.png" alt="Foto da cliente Camila Oliveira" />
+                </div>
+                <div class="feedback-info">
+                  <span class="feedback-name">Camila Oliveira</span>
+                  <span class="feedback-meta">1 crítica</span>
+                </div>
+              </header>
+              <div class="feedback-stars">★★★★★ · há 8 meses</div>
+              <p class="feedback-text">
+                Que experiência incrível! Atendimento super atencioso e cuidadoso.
+                Acertaram certinho no modelo e no tamanho da sandália. Vou indicar
+                com certeza!
+              </p>
+            </article>
+
+            <article class="feedback-card">
+              <header class="feedback-header">
+                <div class="feedback-avatar">
+                  <img src="morena.png" alt="Foto da cliente Juliana Mendes" />
+                </div>
+                <div class="feedback-info">
+                  <span class="feedback-name">Juliana Mendes</span>
+                  <span class="feedback-meta">2 críticas</span>
+                </div>
+              </header>
+              <div class="feedback-stars">★★★★★ · há 3 meses</div>
+              <p class="feedback-text">
+                Chegou tudo certinho, bem embalado e dentro do prazo.
+                Sandália super confortável e igualzinha às fotos que me mandaram
+                no WhatsApp.
+              </p>
+            </article>
+
+            <article class="feedback-card">
+              <header class="feedback-header">
+                <div class="feedback-avatar">
+                  <img src="ruiva.png" alt="Foto da cliente Aline Costa" />
+                </div>
+                <div class="feedback-info">
+                  <span class="feedback-name">Aline Costa</span>
+                  <span class="feedback-meta">3 críticas</span>
+                </div>
+              </header>
+              <div class="feedback-stars">★★★★★ · há 1 mês</div>
+              <p class="feedback-text">
+                As meninas ajudam muito na escolha, mandam fotos e combinam looks.
+                Já virei cliente fiel da Casa das Sandálias.
+              </p>
+            </article>
+
+            <article class="feedback-card">
+              <header class="feedback-header">
+                <div class="feedback-avatar">
+                  <img src="branca.png" alt="Foto da cliente Bianca Rocha" />
+                </div>
+                <div class="feedback-info">
+                  <span class="feedback-name">Bianca Rocha</span>
+                  <span class="feedback-meta">1 crítica</span>
+                </div>
+              </header>
+              <div class="feedback-stars">★★★★★ · há 2 semanas</div>
+              <p class="feedback-text">
+                Ótimo custo-benefício e qualidade excelente. Atendimento rápido,
+                tiraram todas as minhas dúvidas com muita atenção.
+              </p>
+            </article>
+          </div>
+
+          <button class="feedback-nav next" type="button" aria-label="Próximo depoimento">›</button>
+        </div>
+      </section>
 
       <p class="cta-note">Atendimento rápido e seguro.</p>
     </div>
@@ -418,66 +627,133 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+  /* ==========================
+     CARROSSEL DE SAPATOS
+     ========================== */
   const layout = document.querySelector(".shoe-layout");
   const track = document.querySelector(".shoe-track");
   const slides = Array.from(track.querySelectorAll(".shoe"));
   const prevBtn = document.querySelector(".shoe-nav.prev");
   const nextBtn = document.querySelector(".shoe-nav.next");
 
-  if (!layout || !track || slides.length === 0) return;
+  if (layout && track && slides.length > 0) {
+    let currentIndex = 0;
 
-  let currentIndex = 0;
+    function setActive(i) {
+      slides.forEach((s, x) => s.classList.toggle("active", x === i));
+      currentIndex = i;
+    }
 
-  function setActive(i) {
-    slides.forEach((s, x) => s.classList.toggle("active", x === i));
-    currentIndex = i;
+    function scrollToIndex(i) {
+      const slide = slides[i];
+      if (!slide) return;
+
+      const layoutRect = layout.getBoundingClientRect();
+      const slideRect = slide.getBoundingClientRect();
+      const offset =
+        (slideRect.left - layoutRect.left) +
+        track.scrollLeft -
+        (layoutRect.width - slideRect.width) / 2;
+
+      track.scrollTo({ left: offset, behavior: "smooth" });
+      setActive(i);
+    }
+
+    setActive(0);
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener("click", () => {
+        scrollToIndex((currentIndex - 1 + slides.length) % slides.length);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        scrollToIndex((currentIndex + 1) % slides.length);
+      });
+    }
+
+    track.addEventListener("scroll", () => {
+      const layoutRect = layout.getBoundingClientRect();
+      const centerX = layoutRect.left + layoutRect.width / 2;
+      let closest = 0;
+      let minDist = Infinity;
+
+      slides.forEach((s, i) => {
+        const rect = s.getBoundingClientRect();
+        const slideCenter = rect.left + rect.width / 2;
+        const dist = Math.abs(slideCenter - centerX);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = i;
+        }
+      });
+
+      setActive(closest);
+    });
   }
 
-  function scrollToIndex(i) {
-    const slide = slides[i];
-    if (!slide) return;
+  /* ==========================
+     CARROSSEL DE FEEDBACKS
+     ========================== */
+  const fbCarousel = document.querySelector(".feedback-carousel");
+  const fbTrack = fbCarousel?.querySelector(".feedback-track");
+  const fbCards = fbTrack ? Array.from(fbTrack.querySelectorAll(".feedback-card")) : [];
+  const fbPrev = fbCarousel?.querySelector(".feedback-nav.prev");
+  const fbNext = fbCarousel?.querySelector(".feedback-nav.next");
 
-    const layoutRect = layout.getBoundingClientRect();
-    const slideRect = slide.getBoundingClientRect();
-    const offset =
-      (slideRect.left - layoutRect.left) +
-      track.scrollLeft -
-      (layoutRect.width - slideRect.width) / 2;
+  if (fbCarousel && fbTrack && fbCards.length > 0) {
+    let fbIndex = 0;
 
-    track.scrollTo({ left: offset, behavior: "smooth" });
-    setActive(i);
+    function fbSetActive(i) {
+      fbCards.forEach((c, x) => c.classList.toggle("active", x === i));
+      fbIndex = i;
+    }
+
+    function fbScrollTo(i) {
+      const card = fbCards[i];
+      if (!card) return;
+
+      const wrapRect = fbCarousel.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      const offset =
+        (cardRect.left - wrapRect.left) +
+        fbTrack.scrollLeft -
+        (wrapRect.width - cardRect.width) / 2;
+
+      fbTrack.scrollTo({ left: offset, behavior: "smooth" });
+      fbSetActive(i);
+    }
+
+    fbSetActive(0);
+
+    if (fbPrev && fbNext) {
+      fbPrev.addEventListener("click", () => {
+        fbScrollTo((fbIndex - 1 + fbCards.length) % fbCards.length);
+      });
+
+      fbNext.addEventListener("click", () => {
+        fbScrollTo((fbIndex + 1) % fbCards.length);
+      });
+    }
+
+    fbTrack.addEventListener("scroll", () => {
+      const wrapRect = fbCarousel.getBoundingClientRect();
+      const centerX = wrapRect.left + wrapRect.width / 2;
+      let closest = 0;
+      let minDist = Infinity;
+
+      fbCards.forEach((c, i) => {
+        const rect = c.getBoundingClientRect();
+        const cardCenter = rect.left + rect.width / 2;
+        const dist = Math.abs(cardCenter - centerX);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = i;
+        }
+      });
+
+      fbSetActive(closest);
+    });
   }
-
-  setActive(0);
-
-  if (prevBtn && nextBtn) {
-    prevBtn.addEventListener("click", () => {
-      scrollToIndex((currentIndex - 1 + slides.length) % slides.length);
-    });
-
-    nextBtn.addEventListener("click", () => {
-      scrollToIndex((currentIndex + 1) % slides.length);
-    });
-  }
-
-  track.addEventListener("scroll", () => {
-    const layoutRect = layout.getBoundingClientRect();
-    const centerX = layoutRect.left + layoutRect.width / 2;
-    let closest = 0;
-    let minDist = Infinity;
-
-    slides.forEach((s, i) => {
-      const rect = s.getBoundingClientRect();
-      const slideCenter = rect.left + rect.width / 2;
-      const dist = Math.abs(slideCenter - centerX);
-      if (dist < minDist) {
-        minDist = dist;
-        closest = i;
-      }
-    });
-
-    setActive(closest);
-  });
 });
 </script>
 
