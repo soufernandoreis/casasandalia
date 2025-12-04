@@ -32,6 +32,9 @@
       color: var(--dark);
       overflow-x: hidden;
       width: 100%;
+      /* trava arrasto horizontal da página */
+      overscroll-behavior-x: none;
+      touch-action: pan-y;
     }
 
     main {
@@ -168,6 +171,8 @@
       scroll-behavior: smooth;
       scrollbar-width: none;
       max-width: 100%;
+      /* libera swipe horizontal só aqui */
+      touch-action: pan-x;
     }
     .feedback-track::-webkit-scrollbar { display: none; }
 
@@ -290,6 +295,8 @@
       scroll-behavior: smooth;
       scrollbar-width: none;
       max-width: 100%;
+      /* swipe horizontal só aqui também */
+      touch-action: pan-x;
     }
     .shoe-track::-webkit-scrollbar { display: none; }
 
@@ -404,7 +411,7 @@
         margin-top: 14px;
       }
 
-      /* AQUI: garante que os cards nunca passem de 100vw */
+      /* garante que os cards nunca passem de 100vw */
       .feedback-card {
         width: min(80vw, 260px);
       }
