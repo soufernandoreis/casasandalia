@@ -127,6 +127,105 @@
       opacity: .85;
     }
 
+    /* ------------------ FEEDBACKS / DEPOIMENTOS ------------------ */
+    .feedback-wrapper {
+      margin-top: 18px;
+      max-width: 560px;
+    }
+
+    .feedback-heading {
+      font-family: "Poppins", sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 8px;
+      opacity: 0.85;
+    }
+
+    .feedback-layout {
+      position: relative;
+      overflow: hidden;
+      padding: 10px 10px 10px 10px;
+    }
+
+    .feedback-track {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+    .feedback-track::-webkit-scrollbar { display: none; }
+
+    .feedback-card {
+      flex: 0 0 auto;
+      width: 260px;
+      background: #f9f9f9;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.06);
+      padding: 14px 16px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      transition: 0.25s ease;
+    }
+
+    .feedback-card.active {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+    }
+
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .feedback-avatar img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .feedback-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feedback-name {
+      font-size: 0.95rem;
+    }
+
+    .feedback-meta {
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .feedback-text {
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .feedback-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      font-size: 18px;
+    }
+
+    .feedback-nav.prev { left: 0; }
+    .feedback-nav.next { right: 0; }
+
     /* ------------------ RAQUEL ------------------ */
     .hero-image-wrapper {
       display: flex;
@@ -242,6 +341,20 @@
       }
 
       .shoe-nav { display: none; }
+      .feedback-nav { display: none; }
+
+      .feedback-wrapper {
+        margin-inline: auto;
+      }
+
+      .feedback-layout {
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+
+      .feedback-card {
+        width: 260px;
+      }
     }
   </style>
 </head>
@@ -253,7 +366,7 @@
     <div class="hero-text">
 
       <div class="hero-logo">
-        <img src="logo.png" />
+        <img src="logo.png" alt="Logo Casa das Sandálias" />
       </div>
 
       <h1>
@@ -283,11 +396,95 @@
       </div>
 
       <p class="cta-note">Atendimento rápido e seguro.</p>
+
+      <!-- DEPOIMENTOS: entre os botões e a imagem da Raquel (mobile e desktop) -->
+      <div class="feedback-wrapper">
+        <p class="feedback-heading">O que nossas clientes dizem</p>
+
+        <div class="feedback-layout">
+          <button class="feedback-nav prev" aria-label="Depoimento anterior">‹</button>
+
+          <div class="feedback-track">
+            <!-- CARD 1 -->
+            <article class="feedback-card active">
+              <header class="feedback-header">
+                <div class="feedback-avatar">
+                  <img src="perfil1.png" alt="Foto de perfil da cliente Camila" />
+                </div>
+                <div class="feedback-info">
+                  <strong class="feedback-name">Camila Oliveira</strong>
+                  <span class="feedback-meta">★★★★★ · há 8 meses</span>
+                </div>
+              </header>
+              <p class="feedback-text">
+                Que experiência incrível! Atendimento super atencioso e cuidadoso.
+                Acertaram certinho no modelo e no tamanho da sandália. Vou indicar
+                com certeza!
+              </p>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="feedback-card">
+              <header class="feedback-header">
+                <div class="feedback-avatar">
+                  <img src="perfil2.png" alt="Foto de perfil da cliente Juliana" />
+                </div>
+                <div class="feedback-info">
+                  <strong class="feedback-name">Juliana Mendes</strong>
+                  <span class="feedback-meta">★★★★★ · há 3 meses</span>
+                </div>
+              </header>
+              <p class="feedback-text">
+                Chegou tudo certinho, bem embalado e dentro do prazo. Sandália
+                super confortável, exatamente como nas fotos do WhatsApp.
+              </p>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="feedback-card">
+              <header class="feedback-header">
+                <div class="feedback-avatar">
+                  <img src="perfil3.png" alt="Foto de perfil da cliente Aline" />
+                </div>
+                <div class="feedback-info">
+                  <strong class="feedback-name">Aline Costa</strong>
+                  <span class="feedback-meta">★★★★★ · há 1 mês</span>
+                </div>
+              </header>
+              <p class="feedback-text">
+                As meninas ajudam muito na escolha, mandam fotos e combinam looks.
+                Já virei cliente fiel da Casa das Sandálias.
+              </p>
+            </article>
+
+            <!-- CARD 4 -->
+            <article class="feedback-card">
+              <header class="feedback-header">
+                <div class="feedback-avatar">
+                  <img src="perfil4.png" alt="Foto de perfil da cliente Bianca" />
+                </div>
+                <div class="feedback-info">
+                  <strong class="feedback-name">Bianca Rocha</strong>
+                  <span class="feedback-meta">★★★★★ · há 2 semanas</span>
+                </div>
+              </header>
+              <p class="feedback-text">
+                Ótimo custo-benefício e qualidade excelente. Fui muito bem atendida
+                pelo WhatsApp, tiraram todas as minhas dúvidas com paciência.
+              </p>
+            </article>
+          </div>
+
+          <button class="feedback-nav next" aria-label="Próximo depoimento">›</button>
+        </div>
+      </div>
+      <!-- FIM DEPOIMENTOS -->
+
     </div>
 
     <div class="hero-image-wrapper">
       <div class="hero-image">
-        <img src="raquel.png" />
+        <img src="raquel.png" alt="Vendedora da Casa das Sandálias" />
       </div>
     </div>
   </section>
@@ -300,9 +497,9 @@
       <button class="shoe-nav prev">‹</button>
 
       <div class="shoe-track">
-        <div class="shoe active"><img src="tamanco.png"></div>
-        <div class="shoe"><img src="sandalia.png"></div>
-        <div class="shoe"><img src="bota.png"></div>
+        <div class="shoe active"><img src="tamanco.png" alt="Tamanco da coleção em destaque"></div>
+        <div class="shoe"><img src="sandalia.png" alt="Sandália da coleção em destaque"></div>
+        <div class="shoe"><img src="bota.png" alt="Bota da coleção em destaque"></div>
       </div>
 
       <button class="shoe-nav next">›</button>
@@ -317,54 +514,86 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const layout = document.querySelector(".shoe-layout");
-  const track = document.querySelector(".shoe-track");
-  const slides = Array.from(track.children);
-  const prev = document.querySelector(".shoe-nav.prev");
-  const next = document.querySelector(".shoe-nav.next");
+  function initCarousel(layoutSelector, trackSelector, slideSelector, prevSelector, nextSelector, activeClass) {
+    const layout = document.querySelector(layoutSelector);
+    if (!layout) return;
 
-  let index = 0;
+    const track = layout.querySelector(trackSelector);
+    if (!track) return;
 
-  const activate = i => {
-    slides.forEach((s, x) => s.classList.toggle("active", x === i));
-    index = i;
-  };
+    const slides = Array.from(track.querySelectorAll(slideSelector));
+    if (!slides.length) return;
 
-  const scrollToSlide = i => {
-    const slide = slides[i];
-    const layoutRect = layout.getBoundingClientRect();
-    const slideRect = slide.getBoundingClientRect();
+    const prev = layout.querySelector(prevSelector);
+    const next = layout.querySelector(nextSelector);
 
-    const offset = (slideRect.left - layoutRect.left) +
-                   track.scrollLeft -
-                   (layoutRect.width - slideRect.width) / 2;
+    let index = 0;
 
-    track.scrollTo({ left: offset, behavior: "smooth" });
-    activate(i);
-  };
+    const activate = i => {
+      slides.forEach((s, x) => s.classList.toggle(activeClass, x === i));
+      index = i;
+    };
 
-  prev.onclick = () =>
-    scrollToSlide((index - 1 + slides.length) % slides.length);
+    const scrollToSlide = i => {
+      const slide = slides[i];
+      const layoutRect = layout.getBoundingClientRect();
+      const slideRect = slide.getBoundingClientRect();
 
-  next.onclick = () =>
-    scrollToSlide((index + 1) % slides.length);
+      const offset = (slideRect.left - layoutRect.left) +
+                     track.scrollLeft -
+                     (layoutRect.width - slideRect.width) / 2;
 
-  track.addEventListener("scroll", () => {
-    const layoutRect = layout.getBoundingClientRect();
-    const center = layoutRect.left + layoutRect.width / 2;
+      track.scrollTo({ left: offset, behavior: "smooth" });
+      activate(i);
+    };
 
-    let closest = 0, minDist = Infinity;
+    if (prev) {
+      prev.onclick = () =>
+        scrollToSlide((index - 1 + slides.length) % slides.length);
+    }
 
-    slides.forEach((s, i) => {
-      const rect = s.getBoundingClientRect();
-      const d = Math.abs(rect.left + rect.width / 2 - center);
-      if (d < minDist) { minDist = d; closest = i; }
+    if (next) {
+      next.onclick = () =>
+        scrollToSlide((index + 1) % slides.length);
+    }
+
+    track.addEventListener("scroll", () => {
+      const layoutRect = layout.getBoundingClientRect();
+      const center = layoutRect.left + layoutRect.width / 2;
+
+      let closest = 0, minDist = Infinity;
+
+      slides.forEach((s, i) => {
+        const rect = s.getBoundingClientRect();
+        const d = Math.abs(rect.left + rect.width / 2 - center);
+        if (d < minDist) { minDist = d; closest = i; }
+      });
+
+      activate(closest);
     });
 
-    activate(closest);
-  });
+    activate(0);
+  }
 
-  activate(0);
+  // Carrossel dos calçados
+  initCarousel(
+    ".shoe-layout",
+    ".shoe-track",
+    ".shoe",
+    ".shoe-nav.prev",
+    ".shoe-nav.next",
+    "active"
+  );
+
+  // Carrossel dos feedbacks
+  initCarousel(
+    ".feedback-layout",
+    ".feedback-track",
+    ".feedback-card",
+    ".feedback-nav.prev",
+    ".feedback-nav.next",
+    "active"
+  );
 });
 </script>
 
