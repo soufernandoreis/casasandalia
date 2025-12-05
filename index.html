@@ -17,7 +17,7 @@
       --yellow-strong: #ffb52e;
       --dark: #1f1f1f;
       --white: #ffffff;
-      --quote-brown: #4b3a30;
+      --quote-brown: #2f2722; /* mais escuro para melhor leitura */
     }
 
     * {
@@ -196,8 +196,8 @@
     .hero-quote {
       color: var(--quote-brown);
       font-family: "Cormorant Garamond", serif;
-      max-width: 220px;      /* menor que antes */
-      line-height: 1.15;
+      max-width: 220px;
+      line-height: 1.2;
       position: relative;
     }
 
@@ -206,7 +206,7 @@
     }
 
     .hero-quote-mark {
-      font-size: 1.8rem;      /* menor */
+      font-size: 1.6rem;
       font-weight: 600;
       line-height: 1;
       display: block;
@@ -214,7 +214,7 @@
 
     .hero-quote-mark--end {
       text-align: right;
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     .hero-quote-small {
@@ -224,7 +224,7 @@
     }
 
     .hero-quote-big {
-      font-size: 1.4rem;      /* bem menor que antes */
+      font-size: 1.4rem;
       font-weight: 600;
       margin-bottom: 6px;
     }
@@ -238,16 +238,14 @@
       font-weight: 600;
     }
 
-    /* linhas REMOVIDAS: nenhum ::before/::after aqui */
-
     /* ======================
        CARROSSEL MANUAL (SAPATOS)
        ====================== */
 
     .gallery-section {
-      margin-top: 24px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(0,0,0,0.06);
+      margin-top: 16px;   /* aproximar do fim da imagem */
+      padding-top: 8px;
+      /* border-top removido para tirar a linha */
     }
 
     .gallery-title {
@@ -468,20 +466,20 @@
         text-align: center;
       }
 
-      /* MOBILE: quote acima da imagem da Raquel */
+      /* MOBILE: quote colada na cabeça da Raquel */
       .hero-image-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 16px;
+        margin-top: 12px;
       }
 
       .hero-quote {
         order: 1;
         max-width: 90%;
-        margin-bottom: 10px;
+        margin-bottom: -8px; /* puxa a imagem para mais perto do texto */
         text-align: left;
-        align-self: flex-start; /* fica mais para a esquerda, ao lado visualmente */
+        align-self: flex-start;
       }
 
       .hero-image {
