@@ -58,7 +58,7 @@
     .hero-logo {
       position: absolute;
       width: 320px;
-      top: -140px;          /* ajustado para não cortar a logo */
+      top: -140px;
       left: 60px;
       pointer-events: none;
       z-index: 1;
@@ -124,7 +124,7 @@
     .cta-button {
       display: inline-flex;
       align-items: center;
-      justify-content: center;           /* conteúdo centralizado */
+      justify-content: center;
       padding: 12px 22px;
       border-radius: 999px;
       border: none;
@@ -133,7 +133,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: 0.25s ease;
-      background: #3a3a3a;               /* cinza grafite */
+      background: #3a3a3a;
       color: #ffffff;
       box-shadow: 0 8px 18px rgba(0,0,0,0.25);
       animation: cta-pulse 1.8s ease-in-out infinite;
@@ -168,7 +168,7 @@
       align-items: center;
       margin-left: 12px;
       opacity: 0.85;
-      font-size: 1.2rem;   /* setinha maior */
+      font-size: 1.2rem;
     }
 
     /* RAQUEL */
@@ -183,6 +183,22 @@
       max-width: 350px;
       object-fit: contain;
       filter: drop-shadow(0 12px 18px rgba(0,0,0,0.25));
+    }
+
+    /* ======================
+       ANIMAÇÃO DE PULO
+       ====================== */
+
+    @keyframes card-bounce {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+      40% {
+        transform: translateY(-6px) scale(1.05);
+      }
+      100% {
+        transform: translateY(0) scale(1);
+      }
     }
 
     /* ======================
@@ -202,7 +218,7 @@
       font-weight: 600;
       text-transform: uppercase;
       margin-bottom: 6px;
-      text-align: center;       /* CENTRALIZADO */
+      text-align: center;
     }
 
     .gallery-subtitle {
@@ -210,7 +226,7 @@
       font-size: 1.06rem;
       font-weight: 600;
       margin-bottom: 16px;
-      text-align: center;       /* opcional: também centralizado */
+      text-align: center;
     }
 
     .shoe-layout {
@@ -232,17 +248,18 @@
       flex: 0 0 auto;
       width: 230px;
       max-width: 40vw;
+      transition: transform 0.25s ease;
     }
 
     .shoe img {
       width: 100%;
       display: block;
       filter: drop-shadow(0 14px 24px rgba(0,0,0,0.35));
-      transition: 0.25s ease;
+      transition: transform 0.25s ease, filter 0.25s ease;
     }
 
     .shoe.active img {
-      transform: scale(1.06) translateY(-6px);
+      animation: card-bounce 0.35s ease-out;
       filter: drop-shadow(0 20px 34px rgba(0,0,0,0.5));
     }
 
@@ -269,7 +286,7 @@
     .shoe-nav.next { right: 0; }
 
     /* ======================
-       CARROSSEL DE FEEDBACKS (SEÇÃO PRÓPRIA)
+       CARROSSEL DE FEEDBACKS
        ====================== */
 
     .feedback-section {
@@ -285,7 +302,7 @@
       text-transform: uppercase;
       margin-bottom: 12px;
       opacity: 0.85;
-      text-align: center;       /* CENTRALIZADO */
+      text-align: center;
     }
 
     .feedback-layout {
@@ -312,6 +329,12 @@
       border: 1px solid rgba(0,0,0,0.06);
       padding: 10px 12px;
       box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .feedback-card.active {
+      animation: card-bounce 0.35s ease-out;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
     }
 
     .feedback-header {
@@ -432,7 +455,7 @@
       }
 
       .shoe-nav {
-        display: none; /* no mobile arrasta com o dedo */
+        display: none; /* mobile arrasta com o dedo */
       }
 
       .feedback-layout {
@@ -499,8 +522,6 @@
         </a>
       </div>
 
-      <!-- (Frase "atendimento rápido e seguro" removida) -->
-
     </div>
 
     <!-- RAQUEL -->
@@ -520,7 +541,7 @@
       <button class="shoe-nav prev" type="button" aria-label="Anterior">‹</button>
 
       <div class="shoe-track">
-        <figure class="shoe active">
+        <figure class="shoe">
           <img src="tamanco.png" alt="Tamanco" />
         </figure>
 
@@ -620,139 +641,161 @@
     </div>
   </section>
 
-  <!-- Rodapé removido -->
-
 </main>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   /* ==========================
-     CARROSSEL DE SAPATOS
+     FUNÇÃO GENÉRICA PARA LOOP
      ========================== */
-  const layout = document.querySelector(".shoe-layout");
-  const track = document.querySelector(".shoe-track");
-  const slides = track ? Array.from(track.querySelectorAll(".shoe")) : [];
-  const prevBtn = document.querySelector(".shoe-nav.prev");
-  const nextBtn = document.querySelector(".shoe-nav.next");
+  function setupLoopingCarousel(options) {
+    const {
+      layoutSelector,
+      trackSelector,
+      itemSelector,
+      prevSelector,
+      nextSelector,
+    } = options;
 
-  if (layout && track && slides.length) {
-    let currentIndex = 0;
+    const layout = document.querySelector(layoutSelector);
+    const track = layout ? layout.querySelector(trackSelector) : null;
+    let items = track ? Array.from(track.querySelectorAll(itemSelector)) : [];
+    const prevBtn = layout ? layout.querySelector(prevSelector) : null;
+    const nextBtn = layout ? layout.querySelector(nextSelector) : null;
 
-    function setActive(i) {
-      slides.forEach((s, x) => s.classList.toggle("active", x === i));
-      currentIndex = i;
-    }
+    if (!layout || !track || !items.length) return;
 
-    function scrollToIndex(i) {
-      const slide = slides[i];
-      if (!slide) return;
+    const originalCount = items.length;
 
-      const layoutRect = layout.getBoundingClientRect();
-      const slideRect = slide.getBoundingClientRect();
-      const offset =
-        (slideRect.left - layoutRect.left) +
-        track.scrollLeft -
-        (layoutRect.width - slideRect.width) / 2;
+    // marca os itens originais
+    items.forEach((item, index) => {
+      item.dataset.loopIndex = String(index);
+    });
 
-      track.scrollTo({ left: offset, behavior: "smooth" });
-      setActive(i);
-    }
-
-    setActive(0);
-
-    if (prevBtn && nextBtn) {
-      prevBtn.addEventListener("click", () => {
-        scrollToIndex((currentIndex - 1 + slides.length) % slides.length);
-      });
-
-      nextBtn.addEventListener("click", () => {
-        scrollToIndex((currentIndex + 1) % slides.length);
+    // duplica a sequência mais 2x: 1,2,3,1,2,3,1,2,3...
+    const originals = items.slice();
+    const extraCopies = 2; // total = original + 2 cópias
+    for (let copy = 0; copy < extraCopies; copy++) {
+      originals.forEach((item, index) => {
+        const clone = item.cloneNode(true);
+        clone.dataset.loopIndex = String(index);
+        track.appendChild(clone);
       });
     }
 
-    track.addEventListener("scroll", () => {
+    // atualiza a lista com clones incluídos
+    items = Array.from(track.querySelectorAll(itemSelector));
+
+    let currentLogicalIndex = 0;
+
+    function setActiveByElement(el) {
+      items.forEach(item => {
+        item.classList.toggle("active", item === el);
+      });
+      if (el && el.dataset.loopIndex != null) {
+        currentLogicalIndex = Number(el.dataset.loopIndex);
+      }
+    }
+
+    function scrollToLogicalIndex(logicalIndex) {
+      if (!items.length) return;
+
       const layoutRect = layout.getBoundingClientRect();
       const centerX = layoutRect.left + layoutRect.width / 2;
-      let closest = 0;
+
+      let target = null;
       let minDist = Infinity;
 
-      slides.forEach((s, i) => {
-        const rect = s.getBoundingClientRect();
-        const slideCenter = rect.left + rect.width / 2;
-        const dist = Math.abs(slideCenter - centerX);
-        if (dist < minDist) {
-          minDist = dist;
-          closest = i;
+      items.forEach(item => {
+        if (Number(item.dataset.loopIndex) === logicalIndex) {
+          const rect = item.getBoundingClientRect();
+          const itemCenter = rect.left + rect.width / 2;
+          const dist = Math.abs(itemCenter - centerX);
+          if (dist < minDist) {
+            minDist = dist;
+            target = item;
+          }
         }
       });
 
-      setActive(closest);
+      if (!target) return;
+
+      const targetRect = target.getBoundingClientRect();
+      const offset =
+        (targetRect.left - layoutRect.left) +
+        track.scrollLeft -
+        (layoutRect.width - targetRect.width) / 2;
+
+      track.scrollTo({ left: offset, behavior: "smooth" });
+      setActiveByElement(target);
+    }
+
+    // inicializa: centraliza a primeira lógica
+    setTimeout(() => {
+      scrollToLogicalIndex(0);
+    }, 0);
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener("click", () => {
+        const nextIndex =
+          (currentLogicalIndex - 1 + originalCount) % originalCount;
+        scrollToLogicalIndex(nextIndex);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        const nextIndex =
+          (currentLogicalIndex + 1) % originalCount;
+        scrollToLogicalIndex(nextIndex);
+      });
+    }
+
+    // atualiza ativo conforme o scroll manual
+    track.addEventListener("scroll", () => {
+      const layoutRect = layout.getBoundingClientRect();
+      const centerX = layoutRect.left + layoutRect.width / 2;
+      let closest = null;
+      let minDist = Infinity;
+
+      items.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.left + rect.width / 2;
+        const dist = Math.abs(itemCenter - centerX);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = item;
+        }
+      });
+
+      if (closest) {
+        const currentActive = layout.querySelector(itemSelector + ".active");
+        if (currentActive !== closest) {
+          setActiveByElement(closest);
+        }
+      }
     });
   }
 
   /* ==========================
+     CARROSSEL DE SAPATOS
+     ========================== */
+  setupLoopingCarousel({
+    layoutSelector: ".shoe-layout",
+    trackSelector: ".shoe-track",
+    itemSelector: ".shoe",
+    prevSelector: ".shoe-nav.prev",
+    nextSelector: ".shoe-nav.next",
+  });
+
+  /* ==========================
      CARROSSEL DE FEEDBACKS
      ========================== */
-  const fbLayout = document.querySelector(".feedback-layout");
-  const fbTrack = fbLayout?.querySelector(".feedback-track");
-  const fbCards = fbTrack ? Array.from(fbTrack.querySelectorAll(".feedback-card")) : [];
-  const fbPrev = fbLayout?.querySelector(".feedback-nav.prev");
-  const fbNext = fbLayout?.querySelector(".feedback-nav.next");
-
-  if (fbLayout && fbTrack && fbCards.length) {
-    let fbIndex = 0;
-
-    function fbSetActive(i) {
-      fbCards.forEach((c, x) => c.classList.toggle("active", x === i));
-      fbIndex = i;
-    }
-
-    function fbScrollTo(i) {
-      const card = fbCards[i];
-      if (!card) return;
-
-      const layoutRect = fbLayout.getBoundingClientRect();
-      const cardRect = card.getBoundingClientRect();
-      const offset =
-        (cardRect.left - layoutRect.left) +
-        fbTrack.scrollLeft -
-        (layoutRect.width - cardRect.width) / 2;
-
-      fbTrack.scrollTo({ left: offset, behavior: "smooth" });
-      fbSetActive(i);
-    }
-
-    fbSetActive(0);
-
-    if (fbPrev && fbNext) {
-      fbPrev.addEventListener("click", () => {
-        fbScrollTo((fbIndex - 1 + fbCards.length) % fbCards.length);
-      });
-
-      fbNext.addEventListener("click", () => {
-        fbScrollTo((fbIndex + 1) % fbCards.length);
-      });
-    }
-
-    fbTrack.addEventListener("scroll", () => {
-      const layoutRect = fbLayout.getBoundingClientRect();
-      const centerX = layoutRect.left + layoutRect.width / 2;
-      let closest = 0;
-      let minDist = Infinity;
-
-      fbCards.forEach((c, i) => {
-        const rect = c.getBoundingClientRect();
-        const cardCenter = rect.left + rect.width / 2;
-        const dist = Math.abs(cardCenter - centerX);
-        if (dist < minDist) {
-          minDist = dist;
-          closest = i;
-        }
-      });
-
-      fbSetActive(closest);
-    });
-  }
+  setupLoopingCarousel({
+    layoutSelector: ".feedback-layout",
+    trackSelector: ".feedback-track",
+    itemSelector: ".feedback-card",
+    prevSelector: ".feedback-nav.prev",
+    nextSelector: ".feedback-nav.next",
+  });
 });
 </script>
 
