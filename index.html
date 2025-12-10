@@ -2,802 +2,298 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Casa das Sandálias</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cupcake House</title>
 
-  <!-- Fontes Google -->
+  <!-- Swiper CSS -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;800&display=swap"
     rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
   />
 
   <style>
-    :root {
-      --yellow: #ffd54a;
-      --yellow-strong: #ffb52e;
-      --dark: #1f1f1f;
-      --white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      list-style-type: none;
+      text-decoration: none;
+    }
+
+    html {
+      font-size: 62.5%;
+      font-family: sans-serif;
+      scroll-behavior: smooth;
     }
 
     body {
-      min-height: 100vh;
-      font-family: "Inter", sans-serif;
-      background: #ffffff;
-      color: var(--dark);
+      font-size: 1.6rem;
+      background: #ff9a31;
+      color: #ff0095;
     }
+
+    /* HEADER */
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4rem;
+      height: 10rem;
+      background: #f8a1f8;
+    }
+
+    .logo img {
+      height: 6rem;
+    }
+
+    .icon-cart img {
+      width: 6rem;
+      border-radius: 50%;
+      transition: 1s;
+    }
+
+    .icon-cart img:hover {
+      cursor: pointer;
+      background-color: #fff;
+    }
+
+    /* CONTEÚDO PRINCIPAL */
 
     main {
-      max-width: 1180px;
+      display: block;
+      margin: 5rem 0;
+    }
+
+    .title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 4rem;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .title h1 {
+      font-size: 3.2rem;
+    }
+
+    .title img {
+      border-radius: 50%;
+      width: 5rem;
+    }
+
+    /* CONTAINER GENÉRICO */
+
+    .container {
+      max-width: 120rem;
       margin: 0 auto;
-      padding: 28px 18px 56px;
+      padding: 0 2rem;
     }
 
-    /* ======================
-       HERO & LOGO NO H1
-       ====================== */
+    /* SWIPER */
 
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 32px;
-      align-items: center;
-      padding: 10px 0 32px;
-    }
-
-    .hero-text {
-      position: relative;
-    }
-
-    /* LOGO (DESKTOP) */
-    .hero-logo {
-      position: absolute;
-      width: 320px;
-      top: -140px;
-      left: 60px;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .hero-logo img {
+    .trending-slider {
       width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
+      padding: 4rem 0 6rem;
     }
 
-    .hero-text h1 {
-      font-family: "Poppins", sans-serif;
-      font-size: clamp(3rem, 4vw + 1.6rem, 4rem);
-      line-height: 1.05;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      position: relative;
-      z-index: 3;
-      text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.18);
-    }
-
-    .hero-text h1 span.word-yellow {
-      color: var(--yellow-strong);
-    }
-
-    .hero-text h1 span.word-dark {
-      color: var(--dark);
-    }
-
-    .hero-text h2 {
-      font-family: "Poppins", sans-serif;
-      font-size: 1.15rem;
-      font-weight: 500;
-      margin-bottom: 18px;
-    }
-
-    /* ======================
-       BOTÕES (CINZA GRAFITE + PULSE)
-       ====================== */
-
-    .buttons {
+    .trending-slide {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 560px;
-      margin-bottom: 8px;
-    }
-
-    @keyframes cta-pulse {
-      0%, 100% {
-        transform: translateY(0) scale(1);
-        box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-      }
-      50% {
-        transform: translateY(-2px) scale(1.03);
-        box-shadow: 0 12px 26px rgba(0,0,0,0.35);
-      }
-    }
-
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
       justify-content: center;
-      padding: 12px 22px;
-      border-radius: 999px;
-      border: none;
-      text-decoration: none;
-      font-size: 0.98rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.25s ease;
-      background: #3a3a3a;
-      color: #ffffff;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-      animation: cta-pulse 1.8s ease-in-out infinite;
-    }
-
-    .cta-button:hover {
-      background: #2c2c2c;
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.35);
-    }
-
-    .cta-button span.label {
-      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      white-space: nowrap;
     }
 
-    .cta-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: 2px solid #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-    }
-
-    .cta-chevron {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 12px;
-      opacity: 0.85;
-      font-size: 1.2rem;
-    }
-
-    /* RAQUEL */
-
-    .hero-image-wrapper {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .hero-image img {
-      width: 100%;
-      max-width: 350px;
-      object-fit: contain;
-      filter: drop-shadow(0 12px 18px rgba(0,0,0,0.25));
-    }
-
-    /* ======================
-       ANIMAÇÃO DE PULO
-       ====================== */
-
-    @keyframes card-bounce {
-      0% {
-        transform: translateY(0) scale(1);
-      }
-      40% {
-        transform: translateY(-6px) scale(1.05);
-      }
-      100% {
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* ======================
-       CARROSSEL MANUAL (SAPATOS)
-       ====================== */
-
-    .gallery-section {
-      margin-top: 24px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .gallery-title {
-      font-family: "Poppins";
-      font-size: 0.9rem;
-      letter-spacing: 0.16em;
-      font-weight: 600;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      text-align: center;
-    }
-
-    .gallery-subtitle {
-      font-family: "Poppins";
-      font-size: 1.06rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    .shoe-layout {
-      position: relative;
-      overflow: hidden;
-      padding: 16px 32px;
-    }
-
-    .shoe-track {
-      display: flex;
-      gap: 48px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-    }
-    .shoe-track::-webkit-scrollbar { display: none; }
-
-    .shoe {
-      flex: 0 0 auto;
-      width: 230px;
-      max-width: 40vw;
-      transition: transform 0.25s ease;
-    }
-
-    .shoe img {
-      width: 100%;
-      display: block;
-      filter: drop-shadow(0 14px 24px rgba(0,0,0,0.35));
-      transition: transform 0.25s ease, filter 0.25s ease;
-    }
-
-    .shoe.active img {
-      animation: card-bounce 0.35s ease-out;
-      filter: drop-shadow(0 20px 34px rgba(0,0,0,0.5));
-    }
-
-    .shoe-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 38px;
-      height: 38px;
-      background: #ffffffdd;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      font-size: 22px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-      transition: 0.2s ease;
-    }
-
-    .shoe-nav:hover { transform: translateY(-50%) scale(1.1); }
-    .shoe-nav.prev { left: 0; }
-    .shoe-nav.next { right: 0; }
-
-    /* ======================
-       CARROSSEL DE FEEDBACKS
-       ====================== */
-
-    .feedback-section {
-      margin-top: 32px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .feedback-title {
-      font-family: "Poppins", sans-serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      opacity: 0.85;
-      text-align: center;
-    }
-
-    .feedback-layout {
-      position: relative;
-      overflow: hidden;
-      padding: 12px 32px 4px;
-    }
-
-    .feedback-track {
-      display: flex;
-      gap: 24px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-    }
-    .feedback-track::-webkit-scrollbar { display: none; }
-
-    .feedback-card {
-      flex: 0 0 auto;
-      width: 260px;
-      max-width: 80vw;
-      background: #f9f9f9;
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,0.06);
-      padding: 10px 12px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .feedback-card.active {
-      animation: card-bounce 0.35s ease-out;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-    }
-
-    .feedback-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .feedback-avatar img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+    .trending-slide-img img {
+      width: 37rem;
+      height: 42rem;
+      border-radius: 2rem;
       object-fit: cover;
     }
 
-    .feedback-info {
-      display: flex;
-      flex-direction: column;
+    /* Remove sombras padrão do coverflow */
+    .swiper-slide-shadow-left,
+    .swiper-slide-shadow-right {
+      display: none;
     }
 
-    .feedback-name {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
+    /* Paginação e botões */
 
-    .feedback-meta {
-      font-size: 0.8rem;
+    .swiper-pagination-bullet {
+      background: #fff;
       opacity: 0.7;
     }
 
-    .feedback-stars {
-      margin: 4px 0 6px;
-      font-size: 0.8rem;
-      color: #ffb400;
+    .swiper-pagination-bullet-active {
+      background: #ff0095;
     }
 
-    .feedback-text {
-      font-size: 0.86rem;
-      line-height: 1.4;
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #fff;
     }
 
-    .feedback-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 28px;
-      height: 28px;
-      background: #ffffffdd;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #ccc;
+    /* REDES SOCIAIS */
+
+    .social {
+      text-align: center;
+      width: 100%;
+      height: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .social i {
+      font-size: 2.4rem;
+      margin: 0 1rem;
+      transition: 1s;
+    }
+
+    .social i:hover {
       cursor: pointer;
-      font-size: 18px;
-      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
-      transition: 0.2s ease;
+      color: #fff;
     }
 
-    .feedback-nav:hover { transform: translateY(-50%) scale(1.08); }
-    .feedback-nav.prev { left: 8px; }
-    .feedback-nav.next { right: 8px; }
+    /* RESPONSIVO */
 
-    /* ======================
-       RESPONSIVO (MOBILE)
-       ====================== */
-
-    @media (max-width: 900px) {
-      main {
-        padding: 24px 20px 48px;
+    @media (max-width: 768px) {
+      header {
+        padding: 0 2rem;
       }
 
-      .hero {
-        grid-template-columns: 1fr;
+      .title {
+        flex-direction: column;
       }
 
-      .hero-text {
-        padding-top: 16px;
-        text-align: center;
-      }
-
-      .hero-logo {
-        position: static;
-        width: 220px;
-        margin: 0 auto 8px;
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .hero-logo img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: contain;
-      }
-
-      .hero-text h1 {
-        text-align: center;
-      }
-
-      .hero-image-wrapper {
-        justify-content: center;
-        margin-top: 16px;
-      }
-
-      .shoe-layout {
-        padding: 12px 0;
-      }
-
-      .shoe-track {
-        gap: 32px;
-      }
-
-      .shoe {
-        width: 220px;
-        max-width: 70vw;
-      }
-
-      .shoe-nav {
-        display: none; /* mobile arrasta com o dedo */
-      }
-
-      .feedback-layout {
-        padding: 10px 0 4px;
-      }
-
-      .feedback-card {
-        width: min(80vw, 260px);
-      }
-
-      .feedback-nav {
-        display: none; /* mobile navega no dedo */
-      }
-
-      .cta-button {
-        width: 100%;
+      .trending-slide-img img {
+        width: 26rem;
+        height: 30rem;
       }
     }
   </style>
 </head>
-
 <body>
-<main>
-
-  <!-- HERO -->
-  <section class="hero">
-
-    <div class="hero-text">
-
-      <!-- LOGO -->
-      <div class="hero-logo">
-        <img src="logo.png" alt="Logo Casa das Sandálias" />
-      </div>
-
-      <h1>
-        <span class="word-yellow">CASA</span>
-        <span class="word-dark">DAS</span>
-        <span class="word-yellow">SANDÁLIAS</span>
-      </h1>
-
-      <h2>A loja favorita de quem ama calçados</h2>
-
-      <div class="buttons">
-        <a
-          class="cta-button"
-          href="https://wa.me/5562982331156?text=Oi%20Amanda%2C%20quero%20fazer%20um%20pedido."
-        >
-          <span class="label">
-            <span class="cta-icon">💬</span>
-            Vendedora — AMANDA
-          </span>
-          <span class="cta-chevron">➜</span>
-        </a>
-
-        <a
-          class="cta-button"
-          href="https://wa.me/5562982331156?text=Quero%20entrar%20no%20grupo%20de%20ofertas."
-        >
-          <span class="label">
-            <span class="cta-icon">🔔</span>
-            Acesse nosso Grupo de OFERTAS
-          </span>
-          <span class="cta-chevron">➜</span>
-        </a>
-      </div>
-
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="img/logo.png" alt="Cupcake House" />
     </div>
 
-    <!-- RAQUEL -->
-    <div class="hero-image-wrapper">
-      <div class="hero-image">
-        <img src="raquel.png" alt="Modelo Raquel" />
-      </div>
+    <div class="icon-cart">
+      <img src="img/cart.png" alt="Carrinho" />
     </div>
-  </section>
+  </header>
 
-  <!-- COLEÇÃO / CARROSSEL MANUAL (SAPATOS) -->
-  <section class="gallery-section">
-    <p class="gallery-title">Coleção em destaque</p>
-    <p class="gallery-subtitle">Escolha o estilo que combina com você</p>
-
-    <div class="shoe-layout">
-      <button class="shoe-nav prev" type="button" aria-label="Anterior">‹</button>
-
-      <div class="shoe-track">
-        <figure class="shoe">
-          <img src="tamanco.png" alt="Tamanco" />
-        </figure>
-
-        <figure class="shoe">
-          <img src="sandalia.png" alt="Sandália" />
-        </figure>
-
-        <figure class="shoe">
-          <img src="bota.png" alt="Bota" />
-        </figure>
-      </div>
-
-      <button class="shoe-nav next" type="button" aria-label="Próximo">›</button>
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+    <div class="title">
+      <h1>Tasty tasty cupcakes</h1>
+      <img src="img/cupcake-anim.gif" alt="Cupcake animado" />
     </div>
-  </section>
 
-  <!-- SEÇÃO: CARROSSEL DE FEEDBACKS -->
-  <section class="feedback-section">
-    <p class="feedback-title">O que nossas clientes dizem</p>
+    <!-- SLIDER “TRENDING” -->
+    <section id="trending">
+      <div class="container">
+        <div class="swiper trending-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide trending-slide">
+              <div class="trending-slide-img">
+                <img src="img/cupcake-pink.png" alt="Cupcake rosa" />
+              </div>
+            </div>
 
-    <div class="feedback-layout">
-      <button class="feedback-nav prev" type="button" aria-label="Depoimento anterior">‹</button>
+            <div class="swiper-slide trending-slide">
+              <div class="trending-slide-img">
+                <img src="img/cupcake-blue.png" alt="Cupcake azul" />
+              </div>
+            </div>
 
-      <div class="feedback-track">
-        <article class="feedback-card">
-          <header class="feedback-header">
-            <div class="feedback-avatar">
-              <img src="loira.png" alt="Foto da cliente Camila Oliveira" />
+            <div class="swiper-slide trending-slide">
+              <div class="trending-slide-img">
+                <img src="img/cupcake-purple.png" alt="Cupcake roxo" />
+              </div>
             </div>
-            <div class="feedback-info">
-              <span class="feedback-name">Camila Oliveira</span>
-              <span class="feedback-meta">1 crítica</span>
-            </div>
-          </header>
-          <div class="feedback-stars">★★★★★ · há 8 meses</div>
-          <p class="feedback-text">
-            Que experiência incrível! Atendimento super atencioso e cuidadoso.
-            Acertaram certinho no modelo e no tamanho da sandália. Vou indicar
-            com certeza!
-          </p>
-        </article>
 
-        <article class="feedback-card">
-          <header class="feedback-header">
-            <div class="feedback-avatar">
-              <img src="morena.png" alt="Foto da cliente Juliana Mendes" />
+            <div class="swiper-slide trending-slide">
+              <div class="trending-slide-img">
+                <img src="img/cupcake-red.png" alt="Cupcake vermelho" />
+              </div>
             </div>
-            <div class="feedback-info">
-              <span class="feedback-name">Juliana Mendes</span>
-              <span class="feedback-meta">2 críticas</span>
-            </div>
-          </header>
-          <div class="feedback-stars">★★★★★ · há 3 meses</div>
-          <p class="feedback-text">
-            Chegou tudo certinho, bem embalado e dentro do prazo.
-            Sandália super confortável e igualzinha às fotos que me mandaram
-            no WhatsApp.
-          </p>
-        </article>
 
-        <article class="feedback-card">
-          <header class="feedback-header">
-            <div class="feedback-avatar">
-              <img src="ruiva.png" alt="Foto da cliente Aline Costa" />
+            <div class="swiper-slide trending-slide">
+              <div class="trending-slide-img">
+                <img src="img/cupcake-white.png" alt="Cupcake branco" />
+              </div>
             </div>
-            <div class="feedback-info">
-              <span class="feedback-name">Aline Costa</span>
-              <span class="feedback-meta">3 críticas</span>
-            </div>
-          </header>
-          <div class="feedback-stars">★★★★★ · há 1 mês</div>
-          <p class="feedback-text">
-            As meninas ajudam muito na escolha, mandam fotos e combinam looks.
-            Já virei cliente fiel da Casa das Sandálias.
-          </p>
-        </article>
 
-        <article class="feedback-card">
-          <header class="feedback-header">
-            <div class="feedback-avatar">
-              <img src="branca.png" alt="Foto da cliente Bianca Rocha" />
+            <div class="swiper-slide trending-slide">
+              <div class="trending-slide-img">
+                <img src="img/cupcake-yellow.png" alt="Cupcake amarelo" />
+              </div>
             </div>
-            <div class="feedback-info">
-              <span class="feedback-name">Bianca Rocha</span>
-              <span class="feedback-meta">1 crítica</span>
+
+            <div class="swiper-slide trending-slide">
+              <div class="trending-slide-img">
+                <img src="img/cupcake-black.png" alt="Cupcake preto" />
+              </div>
             </div>
-          </header>
-          <div class="feedback-stars">★★★★★ · há 2 semanas</div>
-          <p class="feedback-text">
-            Ótimo custo-benefício e qualidade excelente. Atendimento rápido,
-            tiraram todas as minhas dúvidas com muita atenção.
-          </p>
-        </article>
+          </div>
+
+          <!-- Paginação e navegação -->
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <button class="feedback-nav next" type="button" aria-label="Próximo depoimento">›</button>
-    </div>
-  </section>
+  <!-- REDES SOCIAIS -->
+  <div class="social">
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-youtube"></i>
+  </div>
 
-</main>
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  /* ==========================
-     FUNÇÃO GENÉRICA PARA LOOP
-     ========================== */
-  function setupLoopingCarousel(options) {
-    const {
-      layoutSelector,
-      trackSelector,
-      itemSelector,
-      prevSelector,
-      nextSelector,
-    } = options;
+  <script>
+    // Inicialização do Swiper com efeito coverflow
+    var trendingSlider = new Swiper('.trending-slider', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      loop: true,
+      slidesPerView: 'auto',
 
-    const layout = document.querySelector(layoutSelector);
-    const track = layout ? layout.querySelector(trackSelector) : null;
-    let items = track ? Array.from(track.querySelectorAll(itemSelector)) : [];
-    const prevBtn = layout ? layout.querySelector(prevSelector) : null;
-    const nextBtn = layout ? layout.querySelector(nextSelector) : null;
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 2.5
+      },
 
-    if (!layout || !track || !items.length) return;
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
 
-    const originalCount = items.length;
-
-    // marca os itens originais
-    items.forEach((item, index) => {
-      item.dataset.loopIndex = String(index);
-    });
-
-    // duplica a sequência mais 2x: 1,2,3,1,2,3,1,2,3...
-    const originals = items.slice();
-    const extraCopies = 2; // total = original + 2 cópias
-    for (let copy = 0; copy < extraCopies; copy++) {
-      originals.forEach((item, index) => {
-        const clone = item.cloneNode(true);
-        clone.dataset.loopIndex = String(index);
-        track.appendChild(clone);
-      });
-    }
-
-    // atualiza a lista com clones incluídos
-    items = Array.from(track.querySelectorAll(itemSelector));
-
-    let currentLogicalIndex = 0;
-
-    function setActiveByElement(el) {
-      items.forEach(item => {
-        item.classList.toggle("active", item === el);
-      });
-      if (el && el.dataset.loopIndex != null) {
-        currentLogicalIndex = Number(el.dataset.loopIndex);
-      }
-    }
-
-    function scrollToLogicalIndex(logicalIndex) {
-      if (!items.length) return;
-
-      const layoutRect = layout.getBoundingClientRect();
-      const centerX = layoutRect.left + layoutRect.width / 2;
-
-      let target = null;
-      let minDist = Infinity;
-
-      items.forEach(item => {
-        if (Number(item.dataset.loopIndex) === logicalIndex) {
-          const rect = item.getBoundingClientRect();
-          const itemCenter = rect.left + rect.width / 2;
-          const dist = Math.abs(itemCenter - centerX);
-          if (dist < minDist) {
-            minDist = dist;
-            target = item;
-          }
-        }
-      });
-
-      if (!target) return;
-
-      const targetRect = target.getBoundingClientRect();
-      const offset =
-        (targetRect.left - layoutRect.left) +
-        track.scrollLeft -
-        (layoutRect.width - targetRect.width) / 2;
-
-      track.scrollTo({ left: offset, behavior: "smooth" });
-      setActiveByElement(target);
-    }
-
-    // inicializa: centraliza a primeira lógica
-    setTimeout(() => {
-      scrollToLogicalIndex(0);
-    }, 0);
-
-    if (prevBtn && nextBtn) {
-      prevBtn.addEventListener("click", () => {
-        const nextIndex =
-          (currentLogicalIndex - 1 + originalCount) % originalCount;
-        scrollToLogicalIndex(nextIndex);
-      });
-
-      nextBtn.addEventListener("click", () => {
-        const nextIndex =
-          (currentLogicalIndex + 1) % originalCount;
-        scrollToLogicalIndex(nextIndex);
-      });
-    }
-
-    // atualiza ativo conforme o scroll manual
-    track.addEventListener("scroll", () => {
-      const layoutRect = layout.getBoundingClientRect();
-      const centerX = layoutRect.left + layoutRect.width / 2;
-      let closest = null;
-      let minDist = Infinity;
-
-      items.forEach(item => {
-        const rect = item.getBoundingClientRect();
-        const itemCenter = rect.left + rect.width / 2;
-        const dist = Math.abs(itemCenter - centerX);
-        if (dist < minDist) {
-          minDist = dist;
-          closest = item;
-        }
-      });
-
-      if (closest) {
-        const currentActive = layout.querySelector(itemSelector + ".active");
-        if (currentActive !== closest) {
-          setActiveByElement(closest);
-        }
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
       }
     });
-  }
-
-  /* ==========================
-     CARROSSEL DE SAPATOS
-     ========================== */
-  setupLoopingCarousel({
-    layoutSelector: ".shoe-layout",
-    trackSelector: ".shoe-track",
-    itemSelector: ".shoe",
-    prevSelector: ".shoe-nav.prev",
-    nextSelector: ".shoe-nav.next",
-  });
-
-  /* ==========================
-     CARROSSEL DE FEEDBACKS
-     ========================== */
-  setupLoopingCarousel({
-    layoutSelector: ".feedback-layout",
-    trackSelector: ".feedback-track",
-    itemSelector: ".feedback-card",
-    prevSelector: ".feedback-nav.prev",
-    nextSelector: ".feedback-nav.next",
-  });
-});
-</script>
-
+  </script>
 </body>
 </html>
