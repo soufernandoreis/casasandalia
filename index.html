@@ -38,8 +38,8 @@
 
     body {
       font-size: 1.6rem;
-      background: purple; /* Nova cor: roxo */
-      color: #ff0095;
+      background: #6a0dad; /* Cor roxa exata fornecida */
+      color: white; /* Todos os textos na cor branca */
     }
 
     /* HEADER */
@@ -50,14 +50,14 @@
       justify-content: center;
       align-items: center;
       padding: 0 4rem;
-      height: 20rem; /* Aumentado um pouco mais para baixo */
-      background: black; /* Nova cor: preto */
-      position: relative; /* Para posicionar o logo original */
+      height: 20rem; /* Mantido como solicitado */
+      background: black; /* Mantido como solicitado */
+      position: relative;
     }
 
     .logo {
       position: absolute;
-      top: 2rem; /* Ajuste para posicionar o logo original no canto superior esquerdo */
+      top: 2rem;
       left: 4rem;
     }
 
@@ -66,7 +66,7 @@
     }
 
     .header-center-img {
-      margin-top: 2rem; /* Espaçamento da imagem central */
+      margin-top: 2rem;
     }
 
     .header-center-img img {
@@ -78,7 +78,7 @@
 
     .icon-cart {
       position: absolute;
-      top: 2rem; /* Ajuste para posicionar o carrinho no canto superior direito */
+      top: 2rem;
       right: 4rem;
     }
 
@@ -112,6 +112,7 @@
 
     .title h1 {
       font-size: 3.2rem;
+      color: white; /* Garantir que o título seja branco */
     }
 
     .title img {
@@ -161,7 +162,7 @@
     }
 
     .swiper-pagination-bullet-active {
-      background: #ff0095;
+      background: white; /* Paginação ativa para branco */
     }
 
     .swiper-button-next,
@@ -182,11 +183,12 @@
       font-size: 2.4rem;
       margin: 0 1rem;
       transition: 1s;
+      color: white; /* Ícones sociais para branco */
     }
 
     .social i:hover {
       cursor: pointer;
-      color: #fff;
+      color: lightgray; /* Hover para ícones sociais */
     }
 
     /* RESPONSIVO */
@@ -194,7 +196,7 @@
     @media (max-width: 768px) {
       header {
         padding: 0 2rem;
-        height: 15rem; /* Ajuste para dispositivos menores */
+        height: 15rem;
       }
 
       .logo {
@@ -230,7 +232,8 @@
     </div>
 
     <div class="header-center-img">
-      <img src="img/logogiovana.png" alt="Logotipo Giovana" />
+      <!-- Caminho corrigido para logogiovana.png -->
+      <img src="logogiovana.png" alt="Logotipo Giovana" />
     </div>
 
     <div class="icon-cart">
@@ -245,7 +248,7 @@
       <img src="img/cupcake-anim.gif" alt="Cupcake animado" />
     </div>
 
-    <!-- SLIDER “TRENDING” -->
+    <!-- SLIDER “TRENDING” - CONTEÚDO ORIGINAL RESTAURADO -->
     <section id="trending">
       <div class="container">
         <div class="swiper trending-slider">
