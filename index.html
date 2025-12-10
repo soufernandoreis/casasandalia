@@ -6,17 +6,13 @@
   <title>Cupcake House</title>
 
   <!-- Swiper CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/swiper/swiper-bundle.min.css"
-  />
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
   <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     crossorigin="anonymous"
-    referrerpolicy="no-referrer"
   />
 
   <style>
@@ -33,34 +29,32 @@
     html {
       font-size: 62.5%;
       font-family: sans-serif;
-      scroll-behavior: smooth;
     }
 
     body {
       font-size: 1.6rem;
-      background: #ff9a31;
-      color: #ff0095;
+      background: #7A4CCF; /* fundo roxo */
+      color: #ffffff;
     }
 
     /* HEADER */
-
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 4rem;
       height: 10rem;
-      background: #f8a1f8;
+      background: transparent;
     }
 
     .logo img {
-      height: 6rem;
+      height: 8rem;
     }
 
     .icon-cart img {
       width: 6rem;
       border-radius: 50%;
-      transition: 1s;
+      transition: 0.4s;
     }
 
     .icon-cart img:hover {
@@ -68,34 +62,19 @@
       background-color: #fff;
     }
 
-    /* CONTEÚDO PRINCIPAL */
-
-    main {
-      display: block;
-      margin: 5rem 0;
-    }
-
+    /* LOGO CENTRAL (substitui o texto) */
     .title {
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      margin-bottom: 4rem;
-      padding: 0 2rem;
-      text-align: center;
-    }
-
-    .title h1 {
-      font-size: 3.2rem;
+      margin: 3rem 0 2rem;
     }
 
     .title img {
-      border-radius: 50%;
-      width: 5rem;
+      width: 28rem;
+      height: auto;
     }
 
-    /* CONTAINER GENÉRICO */
-
+    /* CONTAINER */
     .container {
       max-width: 120rem;
       margin: 0 auto;
@@ -103,7 +82,6 @@
     }
 
     /* SWIPER */
-
     .trending-slider {
       width: 100%;
       padding: 4rem 0 6rem;
@@ -116,27 +94,19 @@
     }
 
     .trending-slide-img img {
-      width: 37rem;
-      height: 42rem;
+      width: 37rem;    /* tamanho grande como no primeiro */
+      height: 42rem;   /* idem */
       border-radius: 2rem;
       object-fit: cover;
     }
 
-    /* Remove sombras padrão do coverflow */
-    .swiper-slide-shadow-left,
-    .swiper-slide-shadow-right {
-      display: none;
-    }
-
-    /* Paginação e botões */
-
     .swiper-pagination-bullet {
       background: #fff;
-      opacity: 0.7;
+      opacity: 0.9;
     }
 
     .swiper-pagination-bullet-active {
-      background: #ff0095;
+      background: #ff66ff;
     }
 
     .swiper-button-next,
@@ -145,34 +115,30 @@
     }
 
     /* REDES SOCIAIS */
-
     .social {
       text-align: center;
-      width: 100%;
-      height: 3rem;
       margin-bottom: 3rem;
     }
 
     .social i {
-      font-size: 2.4rem;
+      font-size: 2.7rem;
       margin: 0 1rem;
-      transition: 1s;
+      transition: 0.4s;
     }
 
     .social i:hover {
       cursor: pointer;
-      color: #fff;
+      color: #ffe1ff;
     }
 
     /* RESPONSIVO */
-
     @media (max-width: 768px) {
       header {
         padding: 0 2rem;
       }
 
-      .title {
-        flex-direction: column;
+      .title img {
+        width: 22rem;
       }
 
       .trending-slide-img img {
@@ -183,80 +149,58 @@
   </style>
 </head>
 <body>
+
   <!-- HEADER -->
   <header>
     <div class="logo">
-      <img src="img/logo.png" alt="Cupcake House" />
+      <img src="logogiovana.png" alt="Logo Giovana" />
     </div>
 
     <div class="icon-cart">
-      <img src="img/cart.png" alt="Carrinho" />
+      <img src="cart.png" alt="Carrinho" />
     </div>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main>
-    <div class="title">
-      <h1>Tasty tasty cupcakes</h1>
-      <img src="img/cupcake-anim.gif" alt="Cupcake animado" />
-    </div>
+  <!-- LOGO CENTRAL (no lugar do texto) -->
+  <div class="title">
+    <img src="logogiovana.png" alt="Logo Giovana" />
+  </div>
 
-    <!-- SLIDER “TRENDING” -->
-    <section id="trending">
-      <div class="container">
-        <div class="swiper trending-slider">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-pink.png" alt="Cupcake rosa" />
-              </div>
-            </div>
+  <!-- SLIDER -->
+  <section id="trending">
+    <div class="container">
+      <div class="swiper trending-slider">
+        <div class="swiper-wrapper">
 
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-blue.png" alt="Cupcake azul" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-purple.png" alt="Cupcake roxo" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-red.png" alt="Cupcake vermelho" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-white.png" alt="Cupcake branco" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-yellow.png" alt="Cupcake amarelo" />
-              </div>
-            </div>
-
-            <div class="swiper-slide trending-slide">
-              <div class="trending-slide-img">
-                <img src="img/cupcake-black.png" alt="Cupcake preto" />
-              </div>
+          <!-- SLIDES (todos com 3bolo.png) -->
+          <div class="swiper-slide trending-slide">
+            <div class="trending-slide-img">
+              <img src="3bolo.png" alt="Bolo" />
             </div>
           </div>
 
-          <!-- Paginação e navegação -->
-          <div class="swiper-pagination"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
+          <div class="swiper-slide trending-slide">
+            <div class="trending-slide-img">
+              <img src="3bolo.png" alt="Bolo" />
+            </div>
+          </div>
+
+          <div class="swiper-slide trending-slide">
+            <div class="trending-slide-img">
+              <img src="3bolo.png" alt="Bolo" />
+            </div>
+          </div>
+
         </div>
+
+        <!-- PAGINAÇÃO / NAVEGAÇÃO -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- REDES SOCIAIS -->
   <div class="social">
@@ -265,35 +209,35 @@
     <i class="fab fa-youtube"></i>
   </div>
 
-  <!-- SCRIPTS -->
+  <!-- SWIPER SCRIPT -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
   <script>
-    // Inicialização do Swiper com efeito coverflow
-    var trendingSlider = new Swiper('.trending-slider', {
-      effect: 'coverflow',
+    var trendingSlider = new Swiper(".trending-slider", {
+      effect: "coverflow",
       grabCursor: true,
       centeredSlides: true,
       loop: true,
-      slidesPerView: 'auto',
+      slidesPerView: "auto",
 
       coverflowEffect: {
         rotate: 0,
         stretch: 0,
-        depth: 100,
-        modifier: 2.5
+        depth: 200,
+        modifier: 2.5,
       },
 
       pagination: {
-        el: '.swiper-pagination',
-        clickable: true
+        el: ".swiper-pagination",
+        clickable: true,
       },
 
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      }
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
     });
   </script>
+
 </body>
 </html>
