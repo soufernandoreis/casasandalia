@@ -1,243 +1,41 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cupcake House</title>
+body {
+  background: #7b4add; /* seu roxo de fundo geral */
+}
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+/* FAIXA PRETA */
+.top-bar {
+  background: #000;          /* preto puro */
+  height: 140px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  align-items: center;
+  padding: 0 32px;
+}
 
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    crossorigin="anonymous"
-  />
+/* LOGO ESQUERDA PEQUENA */
+.top-left-logo img {
+  max-width: 70px;
+}
 
-  <style>
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      list-style-type: none;
-      text-decoration: none;
-    }
+/* LOGO CENTRAL MAIOR (DESTAQUE) */
+.top-center-logo {
+  display: flex;
+  justify-content: center;
+}
+.top-center-logo img {
+  max-width: 180px;          /* aqui você “sobe” o destaque da logo */
+}
 
-    html {
-      font-size: 62.5%;
-      font-family: sans-serif;
-    }
+/* CARRINHO DIREITA */
+.top-cart {
+  justify-self: flex-end;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
 
-    body {
-      font-size: 1.6rem;
-      background: #7A4CCF; /* fundo roxo */
-      color: #ffffff;
-    }
-
-    /* HEADER */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 4rem;
-      height: 10rem;
-      background: transparent;
-    }
-
-    .logo img {
-      height: 8rem;
-    }
-
-    .icon-cart img {
-      width: 6rem;
-      border-radius: 50%;
-      transition: 0.4s;
-    }
-
-    .icon-cart img:hover {
-      cursor: pointer;
-      background-color: #fff;
-    }
-
-    /* LOGO CENTRAL (substitui o texto) */
-    .title {
-      display: flex;
-      justify-content: center;
-      margin: 3rem 0 2rem;
-    }
-
-    .title img {
-      width: 28rem;
-      height: auto;
-    }
-
-    /* CONTAINER */
-    .container {
-      max-width: 120rem;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* SWIPER */
-    .trending-slider {
-      width: 100%;
-      padding: 4rem 0 6rem;
-    }
-
-    .trending-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .trending-slide-img img {
-      width: 37rem;    /* tamanho grande como no primeiro */
-      height: 42rem;   /* idem */
-      border-radius: 2rem;
-      object-fit: cover;
-    }
-
-    .swiper-pagination-bullet {
-      background: #fff;
-      opacity: 0.9;
-    }
-
-    .swiper-pagination-bullet-active {
-      background: #ff66ff;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #fff;
-    }
-
-    /* REDES SOCIAIS */
-    .social {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .social i {
-      font-size: 2.7rem;
-      margin: 0 1rem;
-      transition: 0.4s;
-    }
-
-    .social i:hover {
-      cursor: pointer;
-      color: #ffe1ff;
-    }
-
-    /* RESPONSIVO */
-    @media (max-width: 768px) {
-      header {
-        padding: 0 2rem;
-      }
-
-      .title img {
-        width: 22rem;
-      }
-
-      .trending-slide-img img {
-        width: 26rem;
-        height: 30rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- HEADER -->
-  <header>
-    <div class="logo">
-      <img src="logogiovana.png" alt="Logo Giovana" />
-    </div>
-
-    <div class="icon-cart">
-      <img src="cart.png" alt="Carrinho" />
-    </div>
-  </header>
-
-  <!-- LOGO CENTRAL (no lugar do texto) -->
-  <div class="title">
-    <img src="logogiovana.png" alt="Logo Giovana" />
-  </div>
-
-  <!-- SLIDER -->
-  <section id="trending">
-    <div class="container">
-      <div class="swiper trending-slider">
-        <div class="swiper-wrapper">
-
-          <!-- SLIDES (todos com 3bolo.png) -->
-          <div class="swiper-slide trending-slide">
-            <div class="trending-slide-img">
-              <img src="3bolo.png" alt="Bolo" />
-            </div>
-          </div>
-
-          <div class="swiper-slide trending-slide">
-            <div class="trending-slide-img">
-              <img src="3bolo.png" alt="Bolo" />
-            </div>
-          </div>
-
-          <div class="swiper-slide trending-slide">
-            <div class="trending-slide-img">
-              <img src="3bolo.png" alt="Bolo" />
-            </div>
-          </div>
-
-        </div>
-
-        <!-- PAGINAÇÃO / NAVEGAÇÃO -->
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- REDES SOCIAIS -->
-  <div class="social">
-    <i class="fab fa-instagram"></i>
-    <i class="fab fa-facebook"></i>
-    <i class="fab fa-youtube"></i>
-  </div>
-
-  <!-- SWIPER SCRIPT -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-  <script>
-    var trendingSlider = new Swiper(".trending-slider", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      loop: true,
-      slidesPerView: "auto",
-
-      coverflowEffect: {
-        rotate: 0,
-        stretch: 0,
-        depth: 200,
-        modifier: 2.5,
-      },
-
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-  </script>
-
-</body>
-</html>
+/* depois do header, o restante fica com fundo roxo */
+main {
+  background: #7b4add;
+}
