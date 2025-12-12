@@ -50,9 +50,10 @@
       justify-content: center;
       align-items: center;
       padding: 0 4rem;
-      height: 20rem; /* Mantido como solicitado */
-      background: black; /* Mantido como solicitado */
-      position: relative;
+      height: 20rem; /* Altura da faixa preta */
+      background: black;
+      position: relative; /* Essencial para os vagalumes absolutos */
+      overflow: hidden; /* Garante que os vagalumes não "vazem" do header se a animação os levar para fora */
     }
 
     .logo {
@@ -70,7 +71,7 @@
     }
 
     .header-center-img img {
-      height: 25rem; /* AQUI FOI ALTERADO: Aumentado para 25rem */
+      height: 15rem; /* Aumentado para 15rem */
       width: auto;
       display: block;
     }
@@ -210,7 +211,7 @@
       }
 
       .header-center-img img {
-        height: 18rem; /* Ajuste responsivo para a imagem também */
+        height: 8rem; /* Ajuste responsivo para a imagem também */
       }
 
       .title {
@@ -220,6 +221,81 @@
       .trending-slide-img img {
         width: 26rem;
         height: 30rem;
+      }
+    }
+
+    /* ===== VAGALUMES ===== */
+
+    .firefly {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        #fffce1 0%,
+        #ffe26f 45%,
+        rgba(255, 226, 111, 0.2) 60%,
+        transparent 70%
+      );
+      box-shadow: 0 0 14px rgba(255, 246, 196, 1);
+      opacity: 0;
+      animation: firefly 4.5s linear infinite;
+    }
+
+    /* Posições individuais - AJUSTADAS para o HEADER */
+    .firefly--1 {
+      left: 48%;
+      bottom: 20%; /* Ajustado para ficar dentro do header (20% da altura do header) */
+      animation-delay: -0.5s;
+    }
+
+    .firefly--2 {
+      left: 60%;
+      bottom: 50%; /* Ajustado */
+      animation-delay: -1.3s;
+    }
+
+    .firefly--3 {
+      left: 38%;
+      bottom: 80%; /* Ajustado */
+      animation-delay: -2.1s;
+    }
+
+    .firefly--4 {
+      left: 55%;
+      bottom: 30%; /* Ajustado */
+      animation-delay: -2.7s;
+    }
+
+    .firefly--5 {
+      left: 30%;
+      bottom: 60%; /* Ajustado */
+      animation-delay: -3.1s;
+    }
+
+    .firefly--6 {
+      left: 68%;
+      bottom: 70%; /* Ajustado */
+      animation-delay: -3.7s;
+    }
+
+    /* Animação dos vagalumes */
+    @keyframes firefly {
+      0% {
+        transform: translate3d(0, 0, 0) scale(0.5);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      60% {
+        transform: translate3d(12px, -34px, 0) scale(1.05);
+        opacity: 1;
+      }
+      100% {
+        transform: translate3d(-8px, -70px, 0) scale(0.4);
+        opacity: 0;
       }
     }
   </style>
@@ -238,12 +314,20 @@
     <div class="icon-cart">
       <img src="img/cart.png" alt="Carrinho" />
     </div>
+
+    {/* Vagalumes */}
+    <div class="firefly firefly--1"></div>
+    <div class="firefly firefly--2"></div>
+    <div class="firefly firefly--3"></div>
+    <div class="firefly firefly--4"></div>
+    <div class="firefly firefly--5"></div>
+    <div class="firefly firefly--6"></div>
   </header>
 
   <!-- CONTEÚDO PRINCIPAL -->
   <main>
     <div class="title">
-      <h1>Feito à mão e com Coração!</h1>
+      <h1>Tasty tasty cupcakes</h1>
       <img src="img/cupcake-anim.gif" alt="Cupcake animado" />
     </div>
 
