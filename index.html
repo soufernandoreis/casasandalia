@@ -71,7 +71,7 @@
     }
 
     .header-center-img img {
-      height: 25rem; /* RESTAURADO: Altura para desktop (150px) */
+      height: 25rem; /* Altura para desktop (250px) */
       width: auto;
       display: block;
     }
@@ -171,6 +171,15 @@
       color: #fff;
     }
 
+    /* Esconde setas de navegação para mobile */
+    @media (max-width: 768px) {
+      .swiper-button-next,
+      .swiper-button-prev {
+        display: none; /* Oculta as setas */
+      }
+    }
+
+
     /* REDES SOCIAIS */
 
     .social {
@@ -211,7 +220,7 @@
       }
 
       .header-center-img img {
-        height: 15rem; /* RESTAURADO: Altura para mobile (80px) */
+        height: 15rem; /* Altura para mobile (150px) */
       }
 
       .title {
@@ -327,7 +336,7 @@
   <!-- CONTEÚDO PRINCIPAL -->
   <main>
     <div class="title">
-      <h1>Tasty tasty cupcakes</h1>
+      <h1>Feito à mão e com o coração!</h1> <!-- Frase substituída -->
       <img src="img/cupcake-anim.gif" alt="Cupcake animado" />
     </div>
 
@@ -356,7 +365,10 @@
 
             <div class="swiper-slide trending-slide">
               <div class="trending-slide-img">
-                <img src="img/cupcake-red.png" alt="Cupcake vermelho" />
+                <!-- Imagem do cupcake vermelho substituída e com link para WhatsApp -->
+                <a href="https://api.whatsapp.com/send?phone=556281890481" target="_blank">
+                  <img src="img/3bolo.png" alt="Cupcake vermelho" />
+                </a>
               </div>
             </div>
 
@@ -390,7 +402,9 @@
 
   <!-- REDES SOCIAIS -->
   <div class="social">
-    <i class="fab fa-instagram"></i>
+    <a href="https://www.instagram.com/gostosurasdagiii/" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
     <i class="fab fa-facebook"></i>
     <i class="fab fa-youtube"></i>
   </div>
